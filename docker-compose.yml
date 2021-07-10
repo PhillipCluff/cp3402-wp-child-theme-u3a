@@ -17,7 +17,6 @@ services:
             WORDPRESS_ADMIN_EMAIL: test@test.com
         volumes:
             - ./wordpress:/var/www/html
-            - ./themes/wprig:/var/www/html/wp-content/themes/wprig
         secrets:
             - db_password
         depends_on:
