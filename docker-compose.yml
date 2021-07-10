@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.9'
 
 services:
     wordpress:
@@ -8,7 +8,7 @@ services:
         environment:
             WORDPRESS_DB_HOST: mysql
             WORDPRESS_DB_USER: test
-            WORDPRESS_DB_PASSWORD: test
+            WORDPRESS_DB_PASSWORD: /run/secrets/db_password
             WORDPRESS_DB_NAME: wordpress
             WORDPRESS_SITE_URL: 'localhost'
             WORDPRESS_SITE_DESCRIPTION: 'A child theme for a Wordpress site.'
@@ -18,18 +18,29 @@ services:
         volumes:
             - ./wordpress:/var/www/html
             - ./themes/wprig:/var/www/html/wp-content/themes/wprig
+        secrets:
+            - db_password
         depends_on:
             - mysql
-
+        
     mysql:
         image: mariadb:latest
         environment:
             MYSQL_DATABASE: wordpress
             MYSQL_USER: test
-            MYSQL_PASSWORD: test
-            MYSQL_RANDOM_ROOT_PASSWORD: '1'
+            MYSQL_PASSWORD: /run/secrets/db_password
+            MYSQL_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+        secrets:
+            - db_root_password
+            - db_password
         volumes:
             - ./mysql:/var/lib/mysql
+
+secrets:
+   db_password:
+     file: ./db_password.txt
+   db_root_password:
+     file: ./db_root_password.txt
 
 volumes:
     wordpress:
