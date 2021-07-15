@@ -19,7 +19,11 @@ Some useful CLI commands for Git are:
 
 `git commit -m 'write commit message here'`
 
-`git push origin`  
+`git push origin` 
+
+`git checkout <existing_branch>`
+
+`git checkout -b <new_branch>` 
 
 
 ### Deployment
