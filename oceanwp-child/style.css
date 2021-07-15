@@ -5,7 +5,7 @@ Description: Child theme for the OceanWP theme
 Author:      Phillip Cluff
 Author URI:  https://github.com/PhillipCluff/
 Template:    oceanwp
-Version:     0.0.1
+Version:     0.0.2
 License:     GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags:        custom-colors, custom-menu, footer-widgets, full-width-template, theme-options
@@ -26,4 +26,8 @@ Tags:        custom-colors, custom-menu, footer-widgets, full-width-template, th
     font-weight: 600;
     margin: 0;
     color: #ffc709;
+}
+
+#site-navigation-wrap .dropdown-menu > li > a {
+    font-size: 15px;
 }
